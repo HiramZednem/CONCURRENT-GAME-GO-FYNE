@@ -1,0 +1,1 @@
+En este directorio, se almacenan todos los recursos del juego, como imágenes, sonidos, música, fuentes, etc. Estos recursos se utilizan en diferentes partes del juego.
