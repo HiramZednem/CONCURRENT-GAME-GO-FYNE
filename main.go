@@ -8,13 +8,26 @@ import (
 
 func main(){
 	myApp := app.New()
-	myWindow := myApp.NewWindow("Juego Pelota")
-	myWindow.CenterOnScreen()
-	myWindow.SetFixedSize(true)
-	myWindow.Resize(fyne.NewSize(800, 600))
+	// windows
+	game := createSimpleWindow( myApp )
+	menu := createSimpleWindow( myApp )
+	
+	
+	menuScene := scenes.NewMenuScene( menu )
+	menuScene.Show()
 
-	//Cargar y mostrar la escena principal
-	mainMenuScene := scenes.NewMainMenuScene(myWindow)
+	mainMenuScene := scenes.NewMainMenuScene( game )
 	mainMenuScene.Show()
-	myWindow.ShowAndRun()
+	
+	
+	menu.Show()
+	myApp.Run()
+}
+
+func createSimpleWindow(app fyne.App) fyne.Window{
+	window := app.NewWindow("Tux Revenge")
+	window.CenterOnScreen()
+	window.SetFixedSize(true)
+	window.Resize(fyne.NewSize(800, 600))
+	return window
 }

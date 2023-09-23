@@ -22,12 +22,11 @@ func NewMainMenuScene(window fyne.Window) *MainMenuScene {
 }
 
 func (s *MainMenuScene) Show() {
-	pelota := canvas.NewImageFromURI(storage.NewFileURI("./assets/pelota.png"))
-	pelota.Resize(fyne.NewSize(50,50))
-	pelota.Move(fyne.NewPos(100,100))
+
+	pelota := createPeel("./assets/tux.png", 100, 100, 100, 500)
 	
 	//Creamos el modelo
-	p = models.NewPelota(100,100,pelota)
+	p = models.NewPelota(100,500,pelota)
 	
 	botonIniciar := widget.NewButton("Start Game", s.StartGame)
 	botonIniciar.Resize(fyne.NewSize(150,30))
@@ -47,4 +46,11 @@ func (s *MainMenuScene) StartGame() {
 
 func (s *MainMenuScene) StopGame() {
 	p.SetStatus(false)
+}
+
+func createPeel( fileUri string, sizeX float32, sizeY float32, posX float32, posY float32 ) *canvas.Image {
+	image := canvas.NewImageFromURI(storage.NewFileURI(fileUri))
+	image.Resize(fyne.NewSize(sizeX,sizeY))
+	image.Move(fyne.NewPos(posX,posY))
+	return image
 }
