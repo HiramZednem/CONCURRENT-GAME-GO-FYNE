@@ -11,17 +11,20 @@ import (
 	"pelota/models"
 )
 
-type MainMenuScene struct {
+type GameScene struct {
 	window fyne.Window
 }
 
 var p *models.Pelota
 
-func NewMainMenuScene(window fyne.Window) *MainMenuScene {
-	return &MainMenuScene{window: window,}
+func NewGameScene(window fyne.Window) *GameScene {
+	scene := &GameScene{window: window}
+    scene.Render()
+	scene.StartGame()
+    return scene
 }
 
-func (s *MainMenuScene) Show() {
+func (s *GameScene) Render() {
 
 	pelota := createPeel("./assets/tux.png", 100, 100, 100, 500)
 	
@@ -40,11 +43,11 @@ func (s *MainMenuScene) Show() {
 	s.window.SetContent(container.NewWithoutLayout(pelota, botonIniciar, botonDetener)) 
 }
 
-func (s *MainMenuScene) StartGame() {
+func (s *GameScene) StartGame() {
 	go p.Run()
 }
 
-func (s *MainMenuScene) StopGame() {
+func (s *GameScene) StopGame() {
 	p.SetStatus(false)
 }
 

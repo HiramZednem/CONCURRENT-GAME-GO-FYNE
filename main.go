@@ -8,20 +8,12 @@ import (
 
 func main(){
 	myApp := app.New()
-	// windows
-	game := createSimpleWindow( myApp )
 	menu := createSimpleWindow( myApp )
-	
-	
-	menuScene := scenes.NewMenuScene( menu )
+
+	menuScene := scenes.NewMenuScene( menu, createSimpleWindow( myApp ) )
 	menuScene.Show()
 
-	mainMenuScene := scenes.NewMainMenuScene( game )
-	mainMenuScene.Show()
-	
-	
-	menu.Show()
-	myApp.Run()
+	menu.ShowAndRun()
 }
 
 func createSimpleWindow(app fyne.App) fyne.Window{
