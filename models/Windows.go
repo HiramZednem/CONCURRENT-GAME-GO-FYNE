@@ -30,7 +30,7 @@ func (w *Windows) Run() {
 	for w.running {
 		var inc float32 = 50
 
-		if w.posY > 500 {
+		if w.posY > 450 {
 			w.posY = -50
 			w.posX = float32((rand.Intn(12) + 1) * 50)
 		}

@@ -7,6 +7,8 @@ package scenes
 import (
 	"TuxGame/driver"
 	"TuxGame/models"
+	"time"
+
 	// "time"
 
 	"fyne.io/fyne/v2"
@@ -43,10 +45,6 @@ func (s *GameScene) Render() {
 	c = driver.NewCollisionDriver(t, w)
 
 	// Buttons Render
-	btnStop := widget.NewButton("||", s.StopGame)
-	btnStop.Resize(fyne.NewSize(50,50))
-	btnStop.Move(fyne.NewPos(750,550))
-
 	btnLeft := widget.NewButton("<", t.GoLeft)
 	btnLeft.Resize(fyne.NewSize(50,50))
 	btnLeft.Move(fyne.NewPos(350,550))
@@ -55,7 +53,7 @@ func (s *GameScene) Render() {
 	btnRigth.Resize(fyne.NewSize(50,50))
 	btnRigth.Move(fyne.NewPos(400,550))
 
-	s.window.SetContent(container.NewWithoutLayout(tuxPeel, windowsPeel, btnLeft, btnRigth, btnStop)) 
+	s.window.SetContent(container.NewWithoutLayout(tuxPeel, windowsPeel, btnLeft, btnRigth)) 
 }
 
 func (s *GameScene) StartGame() {
@@ -75,11 +73,9 @@ func (s *GameScene) checkGameOver() {
 	for running {
 		if(c.GetGameOver()) {
 			running = false
-			//aqui lo ideal es crear una vista
-			NewMenuScene(window)
-			// gameOver := createPeel("./assets/gameOver.png", 800, 600, 0, 0)
-			// time.Sleep(1000 * time.Millisecond)
-			// s.window.SetContent(container.NewWithoutLayout(gameOver))
+			time.Sleep(1000 * time.Millisecond)
+			NewGameOverScene(s.window)
+			
 		}
 	}
 }
