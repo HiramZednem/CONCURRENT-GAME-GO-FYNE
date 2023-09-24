@@ -28,7 +28,7 @@ func (p *Pelota) Run() {
 	// var incY float32 = 50
 	p.status = true
 	for p.status {
-		if p.posX < 50 || p.posX >740 {
+		if p.posX < 50 || p.posX >650 {
 			incX *= -1	
 		}
 		// if p.posY < 50 || p.posY > 540 {

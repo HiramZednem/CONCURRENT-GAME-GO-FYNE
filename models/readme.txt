@@ -1,1 +1,0 @@
-Aquí se encuentran los modelos de datos relacionados con el juego. Los modelos pueden representar elementos del juego, como jugadores, enemigos, obstaculos etc. Cada modelo podría tener su propio archivo Go.
