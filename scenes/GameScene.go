@@ -63,7 +63,7 @@ func (s *GameScene) StartGame() {
 	go t.Run()
 	go w.Run()
 	go c.Run()
-	go s.checkGameOver()
+	go s.checkGameOver() // Esto se podia hacer utilizando un channel, pero como no lo hemos visto no lo implemente
 }
 
 func (s *GameScene) StopGame() {
