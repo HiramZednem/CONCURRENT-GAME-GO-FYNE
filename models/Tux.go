@@ -10,7 +10,7 @@ import (
 
 type Tux struct {
 	posX, posY, direction float32
-	pause bool	
+	running bool	
 	pel *canvas.Image
 }
 
@@ -18,7 +18,7 @@ func NewTux(posx float32, posy float32, img *canvas.Image) *Tux {
 	return &Tux{
 		posX: posx,
 		posY: posy,
-		pause: false,
+		running: true,
 		pel: img,
 		direction: 0,
 	}
@@ -27,7 +27,7 @@ func NewTux(posx float32, posy float32, img *canvas.Image) *Tux {
 func (t *Tux) Run() {
 	var incX float32 = 50
 	for true { // TODO: isColisioned
-		for !t.pause {
+		for t.running {
 			/*
 			Aqui hay que cambiar la logica, en la scene agregare dos botones, < y >
 			el valor de tux se va a multiplicar por "direction", que va a ser un valor
@@ -49,9 +49,9 @@ func (t *Tux) Run() {
 	}
 }
 
-func (t *Tux) SetPause(pause bool) {
-	t.pause = pause
+func (t *Tux) SetRunning(pause bool) {
+	t.running = pause
 }
-func (t *Tux) GetPause() bool {
-	return t.pause
+func (t *Tux) GetRunning() bool {
+	return t.running
 }

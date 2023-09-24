@@ -48,7 +48,7 @@ func (s *GameScene) StartGame() {
 }
 
 func (s *GameScene) StopGame() {
-	t.SetPause(!t.GetPause())
+	t.SetRunning(!t.GetRunning())
 }
 
 func createPeel( fileUri string, sizeX float32, sizeY float32, posX float32, posY float32 ) *canvas.Image {
