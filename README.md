@@ -6,7 +6,7 @@ TuxGame is an exciting and unique gaming experience that pits Tux, the beloved L
 
 - [Instalation](#instalation)
 - [Examples](#examples)
-- [Contribución](#contribución)
+- [Contribution](#contribution)
 - [Contact](#contact)
 
 ## Instalation
@@ -25,7 +25,7 @@ Run `go run .` to exec the project
 ### In-game
 ![Gameplay](./images/in-game.png)
 
-## Contribución
+## Contribution
 
 I value your input and contributions. If you have ideas, improvements, or features to add, please don't hesitate to get involved. Together, we can make TuxGame even better.
 
