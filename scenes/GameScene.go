@@ -5,7 +5,7 @@
 package scenes
 
 import (
-	"pelota/models"
+	"TuxGame/models"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"

@@ -1,4 +1,4 @@
-module pelota
+module TuxGame
 
 go 1.21.0
 
