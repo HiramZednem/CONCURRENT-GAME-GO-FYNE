@@ -35,13 +35,6 @@ func (w *Windows) Run() {
 				w.posY = -50
 				w.posX = float32((rand.Intn(12) + 1) * 50)
 			}
-			if w.posY >= 400 {
-				if w.posX >= t.posX-50 && w.posX <= t.posX+50 {
-					w.SetRunning(false)
-					t.SetRunning(false)
-					inc = 0
-				}
-			} 
 			
 			w.posY += inc
 			w.pel.Move(fyne.NewPos(w.posX,w.posY))
@@ -56,5 +49,10 @@ func (w *Windows) SetRunning(pause bool) {
 func (w *Windows) GetRunning() bool {
 	return w.running
 }
-
+func (w *Windows) GetPosY() float32 {
+	return w.posY
+}
+func (w *Windows) GetPosX() float32 {
+	return w.posX
+}
 

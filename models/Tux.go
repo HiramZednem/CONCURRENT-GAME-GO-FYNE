@@ -9,7 +9,7 @@ import (
 
 type Tux struct {
 	posX, posY, direction float32
-	running bool	
+	running bool
 	pel *canvas.Image
 }
 
@@ -36,7 +36,7 @@ func (t *Tux) Run() {
 		for t.running {
 			var incX float32 = 50
 			incX *= t.direction
-			
+
 			if t.posX < 50 {
 				t.posX = 50
 			} else if t.posX > 650 {
@@ -55,4 +55,10 @@ func (t *Tux) SetRunning(pause bool) {
 }
 func (t *Tux) GetRunning() bool {
 	return t.running
+}
+func (t *Tux) GetPosY() float32 {
+	return t.posY
+}
+func (t *Tux) GetPosX() float32 {
+	return t.posX
 }
