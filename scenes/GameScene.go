@@ -7,6 +7,7 @@ package scenes
 import (
 	"TuxGame/driver"
 	"TuxGame/models"
+	"time"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
@@ -61,11 +62,24 @@ func (s *GameScene) StartGame() {
 	go t.Run()
 	go w.Run()
 	go c.Run()
+	go s.checkGameOver()
 }
 
 func (s *GameScene) StopGame() {
 	t.SetRunning(!t.GetRunning())
 	w.SetRunning(!w.GetRunning())
+}
+
+func (s *GameScene) checkGameOver() {
+	running := true
+	for running {
+		if(c.GetGameOver()) {
+			gameOver := createPeel("./assets/gameOver.png", 800, 600, 0, 0)
+			time.Sleep(1000 * time.Millisecond)
+			s.window.SetContent(container.NewWithoutLayout(gameOver))
+			running = false
+		}
+	}
 }
 
 func createPeel( fileUri string, sizeX float32, sizeY float32, posX float32, posY float32 ) *canvas.Image {
