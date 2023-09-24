@@ -29,14 +29,21 @@ func NewGameScene(window fyne.Window) *GameScene {
 
 func (s *GameScene) Render() {
 	tuxPeel := createPeel("./assets/tux.png", 100, 100, 100, 500)
-	t = models.NewTux(100,500,tuxPeel)
+	t = models.NewTux(350,450,tuxPeel)
 	
-	botonDetener := widget.NewButton("Stop Game", s.StopGame)
-	botonDetener.Resize(fyne.NewSize(150,30))
-	botonDetener.Move(fyne.NewPos(300,50))
+	botonDetener := widget.NewButton("||", s.StopGame)
+	botonDetener.Resize(fyne.NewSize(50,50))
+	botonDetener.Move(fyne.NewPos(750,550))
 
+	btnLeft := widget.NewButton("<", t.GoLeft)
+	btnLeft.Resize(fyne.NewSize(50,50))
+	btnLeft.Move(fyne.NewPos(350,550))
 
-	s.window.SetContent(container.NewWithoutLayout(tuxPeel, botonDetener)) 
+	btnRigth := widget.NewButton(">", t.GoRigth)
+	btnRigth.Resize(fyne.NewSize(50,50))
+	btnRigth.Move(fyne.NewPos(400,550))
+
+	s.window.SetContent(container.NewWithoutLayout(tuxPeel, botonDetener, btnLeft, btnRigth)) 
 }
 
 func (s *GameScene) StartGame() {

@@ -24,8 +24,16 @@ func NewTux(posx float32, posy float32, img *canvas.Image) *Tux {
 	}
 }
 
+
+func (t *Tux) GoRigth() {
+	t.direction = 1
+}
+
+func (t *Tux) GoLeft () {
+	t.direction = -1
+}
+
 func (t *Tux) Run() {
-	var incX float32 = 50
 	for true { // TODO: isColisioned
 		for t.running {
 			/*
@@ -36,13 +44,17 @@ func (t *Tux) Run() {
 			Ahora, quiero hacer que si la pos.x llega a un limite, como 50 a 700, entonces sume 0
 			para que no se mueva hasta que pulses la direccion hacia el otro lado
 			*/
-
-
-			if t.posX < 50 || t.posX > 650 {
-				incX *= -1	
+			var incX float32 = 50
+			incX *= t.direction
+			
+			if t.posX < 50 {
+				t.posX = 50
+			} else if t.posX > 650 {
+				t.posX = 650
 			}
+
 			t.posX += incX
-			fmt.Println(t.posX, t.posY)
+			fmt.Println(t.posX)
 			t.pel.Move(fyne.NewPos(t.posX,t.posY))
 			time.Sleep(100 * time.Millisecond)
 		}
