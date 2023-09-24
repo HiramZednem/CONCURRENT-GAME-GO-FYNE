@@ -18,10 +18,12 @@ type MenuScene struct {
 func NewMenuScene(window, gameWindow fyne.Window) *MenuScene {
 	game = gameWindow
 	menu = window
-	return &MenuScene{window: window,}
+	scene := &MenuScene{window: window,}
+	scene.Render()
+	return scene
 }
 
-func (menuScene *MenuScene) Show() {
+func (menuScene *MenuScene) Render() {
 	backgroundImage := canvas.NewImageFromURI( storage.NewFileURI("./assets/background.jpg") )
     backgroundImage.Resize(fyne.NewSize(800,600))
 	backgroundImage.Move( fyne.NewPos(0,0) )

@@ -9,10 +9,7 @@ import (
 func main(){
 	myApp := app.New()
 	menu := createSimpleWindow( myApp )
-
-	menuScene := scenes.NewMenuScene( menu, createSimpleWindow( myApp ) )
-	menuScene.Show()
-
+	scenes.NewMenuScene( menu, createSimpleWindow( myApp ) )
 	menu.ShowAndRun()
 }
 
