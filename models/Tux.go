@@ -1,7 +1,6 @@
 package models
 
 import (
-	// "fmt"
 	"time"
 
 	"fyne.io/fyne/v2"
@@ -24,7 +23,6 @@ func NewTux(posx float32, posy float32, img *canvas.Image) *Tux {
 	}
 }
 
-
 func (t *Tux) GoRigth() {
 	t.direction = 1
 }
@@ -46,9 +44,8 @@ func (t *Tux) Run() {
 			}
 
 			t.posX += incX
-			// fmt.Println(t.posX)
 			t.pel.Move(fyne.NewPos(t.posX,t.posY))
-			time.Sleep(90 * time.Millisecond)
+			time.Sleep(100 * time.Millisecond)
 		}
 	}
 }

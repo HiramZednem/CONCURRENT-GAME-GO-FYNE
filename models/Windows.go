@@ -1,7 +1,6 @@
 package models
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 
@@ -9,13 +8,16 @@ import (
 	"fyne.io/fyne/v2/canvas"
 )
 
+var t *Tux
+
 type Windows struct {
 	posX, posY, direction float32
 	running bool	
 	pel *canvas.Image
 }
 
-func NewWindows(posx float32, posy float32, img *canvas.Image) *Windows {
+func NewWindows(posx float32, posy float32, img *canvas.Image, tux *Tux) *Windows {
+	t = tux
 	return &Windows{
 		posX: posx,
 		posY: posy,
@@ -28,16 +30,22 @@ func (w *Windows) Run() {
 	for true { // TODO: isColisioned
 		for w.running {
 			var inc float32 = 50
-			
+
 			if w.posY > 500 {
 				w.posY = -50
 				w.posX = float32((rand.Intn(12) + 1) * 50)
 			}
-	
+			if w.posY >= 400 {
+				if w.posX >= t.posX-50 && w.posX <= t.posX+50 {
+					w.SetRunning(false)
+					t.SetRunning(false)
+					inc = 0
+				}
+			} 
+			
 			w.posY += inc
-			fmt.Println(w.posY)
 			w.pel.Move(fyne.NewPos(w.posX,w.posY))
-			time.Sleep(90 * time.Millisecond)
+			time.Sleep(100 * time.Millisecond)
 		}
 	}
 }

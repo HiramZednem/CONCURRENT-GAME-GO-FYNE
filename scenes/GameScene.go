@@ -32,7 +32,7 @@ func (s *GameScene) Render() {
 	tuxPeel := createPeel("./assets/tux.png", 100, 100, 100, 450)
 	t = models.NewTux( 350, 450, tuxPeel )
 	windowsPeel := createPeel("./assets/windows.png", 100, 100, 100, 50)
-	w = models.NewWindows( 350, -50, windowsPeel )
+	w = models.NewWindows( 350, -50, windowsPeel, t )
 
 	
 	btnStop := widget.NewButton("||", s.StopGame)
@@ -54,8 +54,6 @@ func (s *GameScene) StartGame() {
 	go t.Run()
 	go w.Run()
 
-	// TODO: Crear modelo windows, y cada vez que llegue a posY 450 (osea toque el bottom), regrese a posY 0, y tenga su movimiento de bajar siempre comprobando
-	// que window.collisioned, si colisiona con tux, el juego acaba
 	// TODO: Crear Timer, para ver cuanto tiempo sobrevives y cuando window.collisioned, te diga has sobrevivido 1:30m
 }
 
