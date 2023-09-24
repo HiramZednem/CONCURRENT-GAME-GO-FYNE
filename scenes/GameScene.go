@@ -61,8 +61,6 @@ func (s *GameScene) StartGame() {
 	go t.Run()
 	go w.Run()
 	go c.Run()
-
-	// TODO: Crear Timer, para ver cuanto tiempo sobrevives y cuando window.collisioned, te diga has sobrevivido 1:30m
 }
 
 func (s *GameScene) StopGame() {
