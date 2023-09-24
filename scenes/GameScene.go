@@ -34,6 +34,9 @@ func NewGameScene(window fyne.Window) *GameScene {
 }
 
 func (s *GameScene) Render() {
+	backgroundImage := canvas.NewImageFromURI( storage.NewFileURI("./assets/darkPurple.png") )
+    backgroundImage.Resize(fyne.NewSize(800,600))
+	backgroundImage.Move( fyne.NewPos(0,0) )
 	// Models Render
 	tuxPeel := createPeel("./assets/tux.png", 100, 100, 100, 450)
 	t = models.NewTux( 350, 450, tuxPeel )
@@ -53,7 +56,7 @@ func (s *GameScene) Render() {
 	btnRigth.Resize(fyne.NewSize(50,50))
 	btnRigth.Move(fyne.NewPos(400,550))
 
-	s.window.SetContent(container.NewWithoutLayout(tuxPeel, windowsPeel, btnLeft, btnRigth)) 
+	s.window.SetContent(container.NewWithoutLayout(backgroundImage, tuxPeel, windowsPeel, btnLeft, btnRigth)) 
 }
 
 func (s *GameScene) StartGame() {
