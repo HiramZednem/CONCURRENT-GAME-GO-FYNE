@@ -2,7 +2,7 @@
 
 TuxGame is an exciting and unique gaming experience that pits Tux, the beloved Linux mascot, against the Windows operating system. This project was born out of a desire to showcase the incredible potential of Go in concurrent programming.
 
-## Tabla de Contenidos
+## Table of Contents
 
 - [Instalation](#instalation)
 - [Examples](#examples)
