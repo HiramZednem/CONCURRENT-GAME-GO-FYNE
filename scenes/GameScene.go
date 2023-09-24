@@ -48,10 +48,9 @@ func (s *GameScene) Render() {
 
 func (s *GameScene) StartGame() {
 	go t.Run()
-	// TODO: Crear modelo windows, y cada vez que llegue a posY 800 (osea toque el bottom), regrese a posY 0, y tenga su movimiento de bajar siempre comprobando
+	// TODO: Crear modelo windows, y cada vez que llegue a posY 450 (osea toque el bottom), regrese a posY 0, y tenga su movimiento de bajar siempre comprobando
 	// que window.collisioned, si colisiona con tux, el juego acaba
 	// TODO: Crear Timer, para ver cuanto tiempo sobrevives y cuando window.collisioned, te diga has sobrevivido 1:30m
-	// Ahora, para que no se vuelva repetitivo que voy a hacer?, no importa la jugabilidad xd, asi que a csm
 }
 
 func (s *GameScene) StopGame() {
