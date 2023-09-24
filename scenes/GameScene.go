@@ -7,7 +7,7 @@ package scenes
 import (
 	"TuxGame/driver"
 	"TuxGame/models"
-	"time"
+	// "time"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
@@ -74,10 +74,12 @@ func (s *GameScene) checkGameOver() {
 	running := true
 	for running {
 		if(c.GetGameOver()) {
-			gameOver := createPeel("./assets/gameOver.png", 800, 600, 0, 0)
-			time.Sleep(1000 * time.Millisecond)
-			s.window.SetContent(container.NewWithoutLayout(gameOver))
 			running = false
+			//aqui lo ideal es crear una vista
+			NewMenuScene(window)
+			// gameOver := createPeel("./assets/gameOver.png", 800, 600, 0, 0)
+			// time.Sleep(1000 * time.Millisecond)
+			// s.window.SetContent(container.NewWithoutLayout(gameOver))
 		}
 	}
 }

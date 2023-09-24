@@ -20,7 +20,7 @@ func NewCollisionDriver(tux *models.Tux, windows *models.Windows) *CollisionDriv
 }
 
 func (c *CollisionDriver) Run() {
-	for {
+	for !c.gameOver{
 		if w.GetPosY() >= 400 {
 			if w.GetPosX() >= t.GetPosX()-50 && w.GetPosX() <= t.GetPosX()+50 {
 				w.SetRunning(false)

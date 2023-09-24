@@ -32,21 +32,19 @@ func (t *Tux) GoLeft () {
 }
 
 func (t *Tux) Run() {
-	for true { // TODO: isColisioned
-		for t.running {
-			var incX float32 = 50
-			incX *= t.direction
+	for t.running {
+		var incX float32 = 50
+		incX *= t.direction
 
-			if t.posX < 50 {
-				t.posX = 50
-			} else if t.posX > 650 {
-				t.posX = 650
-			}
-
-			t.posX += incX
-			t.pel.Move(fyne.NewPos(t.posX,t.posY))
-			time.Sleep(100 * time.Millisecond)
+		if t.posX < 50 {
+			t.posX = 50
+		} else if t.posX > 650 {
+			t.posX = 650
 		}
+
+		t.posX += incX
+		t.pel.Move(fyne.NewPos(t.posX,t.posY))
+		time.Sleep(100 * time.Millisecond)
 	}
 }
 

@@ -8,15 +8,12 @@ import (
 
 func main(){
 	myApp := app.New()
-	menu := createSimpleWindow( myApp )
-	scenes.NewMenuScene( menu, createSimpleWindow( myApp ) )
-	menu.ShowAndRun()
-}
+	window := myApp.NewWindow("Tux Revenge")
 
-func createSimpleWindow(app fyne.App) fyne.Window{
-	window := app.NewWindow("Tux Revenge")
 	window.CenterOnScreen()
 	window.SetFixedSize(true)
 	window.Resize(fyne.NewSize(800, 600))
-	return window
+	
+	scenes.NewMenuScene( window )
+	window.ShowAndRun()
 }

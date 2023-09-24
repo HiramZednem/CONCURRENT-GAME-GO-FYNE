@@ -27,19 +27,17 @@ func NewWindows(posx float32, posy float32, img *canvas.Image, tux *Tux) *Window
 }
 
 func (w *Windows) Run() {
-	for true { // TODO: isColisioned
-		for w.running {
-			var inc float32 = 50
+	for w.running {
+		var inc float32 = 50
 
-			if w.posY > 500 {
-				w.posY = -50
-				w.posX = float32((rand.Intn(12) + 1) * 50)
-			}
-			
-			w.posY += inc
-			w.pel.Move(fyne.NewPos(w.posX,w.posY))
-			time.Sleep(100 * time.Millisecond)
+		if w.posY > 500 {
+			w.posY = -50
+			w.posX = float32((rand.Intn(12) + 1) * 50)
 		}
+		
+		w.posY += inc
+		w.pel.Move(fyne.NewPos(w.posX,w.posY))
+		time.Sleep(100 * time.Millisecond)
 	}
 }
 

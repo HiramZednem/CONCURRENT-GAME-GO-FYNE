@@ -8,17 +8,17 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
-var game fyne.Window
-var menu fyne.Window
+
+var window fyne.Window
 
 type MenuScene struct {
 	window fyne.Window
 }
 
-func NewMenuScene(window, gameWindow fyne.Window) *MenuScene {
-	game = gameWindow
-	menu = window
-	scene := &MenuScene{window: window,}
+func NewMenuScene(fyneWindow fyne.Window) *MenuScene {
+	
+	window = fyneWindow
+	scene := &MenuScene{window: fyneWindow}
 	scene.Render()
 	return scene
 }
@@ -36,9 +36,6 @@ func (menuScene *MenuScene) Render() {
 }
 
 func (menuScene *MenuScene) StartGame() {
-	NewGameScene( game )
-
-	menu.Hide()
-	game.Show()
+	NewGameScene( window )
 }
 
