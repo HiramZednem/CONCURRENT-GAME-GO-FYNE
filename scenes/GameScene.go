@@ -19,6 +19,7 @@ type GameScene struct {
 }
 
 var t *models.Tux
+var w *models.Windows
 
 func NewGameScene(window fyne.Window) *GameScene {
 	scene := &GameScene{window: window}
@@ -28,12 +29,15 @@ func NewGameScene(window fyne.Window) *GameScene {
 }
 
 func (s *GameScene) Render() {
-	tuxPeel := createPeel("./assets/tux.png", 100, 100, 100, 500)
-	t = models.NewTux(350,450,tuxPeel)
+	tuxPeel := createPeel("./assets/tux.png", 100, 100, 100, 450)
+	t = models.NewTux( 350, 450, tuxPeel )
+	windowsPeel := createPeel("./assets/windows.png", 100, 100, 100, 50)
+	w = models.NewWindows( 350, -50, windowsPeel )
+
 	
-	botonDetener := widget.NewButton("||", s.StopGame)
-	botonDetener.Resize(fyne.NewSize(50,50))
-	botonDetener.Move(fyne.NewPos(750,550))
+	btnStop := widget.NewButton("||", s.StopGame)
+	btnStop.Resize(fyne.NewSize(50,50))
+	btnStop.Move(fyne.NewPos(750,550))
 
 	btnLeft := widget.NewButton("<", t.GoLeft)
 	btnLeft.Resize(fyne.NewSize(50,50))
@@ -43,11 +47,13 @@ func (s *GameScene) Render() {
 	btnRigth.Resize(fyne.NewSize(50,50))
 	btnRigth.Move(fyne.NewPos(400,550))
 
-	s.window.SetContent(container.NewWithoutLayout(tuxPeel, botonDetener, btnLeft, btnRigth)) 
+	s.window.SetContent(container.NewWithoutLayout(tuxPeel, windowsPeel, btnLeft, btnRigth, btnStop)) 
 }
 
 func (s *GameScene) StartGame() {
 	go t.Run()
+	go w.Run()
+
 	// TODO: Crear modelo windows, y cada vez que llegue a posY 450 (osea toque el bottom), regrese a posY 0, y tenga su movimiento de bajar siempre comprobando
 	// que window.collisioned, si colisiona con tux, el juego acaba
 	// TODO: Crear Timer, para ver cuanto tiempo sobrevives y cuando window.collisioned, te diga has sobrevivido 1:30m
@@ -55,6 +61,7 @@ func (s *GameScene) StartGame() {
 
 func (s *GameScene) StopGame() {
 	t.SetRunning(!t.GetRunning())
+	w.SetRunning(!w.GetRunning())
 }
 
 func createPeel( fileUri string, sizeX float32, sizeY float32, posX float32, posY float32 ) *canvas.Image {

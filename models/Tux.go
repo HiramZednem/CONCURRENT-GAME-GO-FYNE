@@ -1,7 +1,7 @@
 package models
 
 import (
-	"fmt"
+	// "fmt"
 	"time"
 
 	"fyne.io/fyne/v2"
@@ -46,9 +46,9 @@ func (t *Tux) Run() {
 			}
 
 			t.posX += incX
-			fmt.Println(t.posX)
+			// fmt.Println(t.posX)
 			t.pel.Move(fyne.NewPos(t.posX,t.posY))
-			time.Sleep(100 * time.Millisecond)
+			time.Sleep(90 * time.Millisecond)
 		}
 	}
 }
